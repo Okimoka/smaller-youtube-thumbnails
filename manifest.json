@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+
+  "name": "Smaller youtube thumbnails",
+  "description": "Restores the old, small youtube thumbnails, which didn't need so much scrolling",
+  "version": "0.0.0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+
+  "permissions": [
+    "tabs", "http://www.youtube.com/watch*", "https://www.youtube.com/watch*", "alarms", "tabs", "bookmarks", "*://*/*"
+  ],
+
+ "content_scripts": [
+     {
+       "matches": ["http://www.youtube.com/watch*", "https://www.youtube.com/watch*"],
+       "js": ["main.js"],
+       "run_at": "document_end"
+     },
+     {
+       "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
+       "js": ["normalAnchors.js"],
+       "run_at": "document_end"
+     }
+ ]
+
+}
